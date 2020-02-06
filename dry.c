@@ -4,33 +4,6 @@
 
 /* variables for time measurement: */
 
-#ifdef TIME
-
-#define CLOCK_TYPE "time()"
-#undef HZ
-#define HZ	(1) /* time() returns time in seconds */
-extern long     time(); /* see library function "time"  */
-#define Too_Small_Time 2 /* Measurements should last at least 2 seconds */
-#define Start_Timer() Begin_Time = time ( (long *) 0)
-#define Stop_Timer()  End_Time   = time ( (long *) 0)
-
-#else
-
-#ifdef MSC_CLOCK /* Use Microsoft C hi-res clock */
-
-#undef HZ
-#undef TIMES
-#include <time.h>
-#define HZ	CLK_TCK
-#define CLOCK_TYPE "MSC clock()"
-extern clock_t	clock();
-#define Too_Small_Time (2*HZ)
-#define Start_Timer() Begin_Time = clock()
-#define Stop_Timer()  End_Time   = clock()
-
-#else
-                /* Use times(2) time function unless    */
-                /* explicitly defined otherwise         */
 #define CLOCK_TYPE "times()"
 #include <sys/types.h>
 #include <sys/times.h>
@@ -49,31 +22,14 @@ struct tms      time_info;
 #define Start_Timer() times(&time_info); Begin_Time=(long)time_info.tms_utime
 #define Stop_Timer()  times(&time_info); End_Time = (long)time_info.tms_utime
 
-#endif /* MSC_CLOCK */
-#endif /* TIME */
-
 
 #define Mic_secs_Per_Second     1000000.0
 #define NUMBER_OF_RUNS		50000 /* Default number of runs */
 
-#ifdef  NOSTRUCTASSIGN
-#define structassign(d, s)      memcpy(&(d), &(s), sizeof(d))
-#else
 #define structassign(d, s)      d = s
-#endif
 
-#ifdef  NOENUM
-#define Ident_1 0
-#define Ident_2 1
-#define Ident_3 2
-#define Ident_4 3
-#define Ident_5 4
-  typedef int   Enumeration;
-#else
   typedef       enum    {Ident_1, Ident_2, Ident_3, Ident_4, Ident_5}
                 Enumeration;
-#endif
-        /* for boolean and enumeration types in Ada, Pascal */
 
 /* General definitions: */
 
@@ -449,19 +405,6 @@ Proc_5 () /* without parameters */
   Ch_1_Glob = 'A';
   Bool_Glob = false;
 } /* Proc_5 */
-
-
-        /* Procedure for the assignment of structures,          */
-        /* if the C compiler doesn't support this feature       */
-#ifdef  NOSTRUCTASSIGN
-memcpy (d, s, l)
-register char   *d;
-register char   *s;
-register int    l;
-{
-        while (l--) *d++ = *s++;
-}
-#endif
 
 
 #else /* PASS2 */
