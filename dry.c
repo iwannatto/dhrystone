@@ -1,30 +1,3 @@
-#ifdef NOTDEFINED /* To compile and run this file, say "sh dry.c" */
-	case $0 in
-	*.c) ;;
-	sh) echo 'Use "sh dry.c", not "sh < dry.c"' >&2; exit 1;;
-	*) echo 'Filename must end in ".c"' >&2; exit 1;;
-	esac
-
-	echo "${CC=cc} -c ${CFLAGS} $0 -o dry1.o"
-	      ${CC}    -c ${CFLAGS} $0 -o dry1.o || exit 1
-	echo "${CC} -DPASS2 ${CFLAGS} $0 dry1.o ${LFLAGS} -o dry2"
-	      ${CC} -DPASS2 ${CFLAGS} $0 dry1.o ${LFLAGS} -o dry2 || exit 1
-	./dry2 ${1-50000} 2>/dev/null
-	echo "${CC=cc} -c -DREG ${CFLAGS} $0 -o dry1.o"
-	      ${CC}    -c -DREG ${CFLAGS} $0 -o dry1.o || exit 1
-	echo "${CC} -DPASS2 -DREG ${CFLAGS} $0 dry1.o ${LFLAGS} -o dry2nr"
-	      ${CC} -DPASS2 -DREG ${CFLAGS} $0 dry1.o ${LFLAGS} -o dry2nr || exit 1
-	./dry2nr ${1-50000} 2>/dev/null
-	echo "${CC=cc} -c -O ${CFLAGS} $0 -o dry1.o"
-	      ${CC}    -c -O ${CFLAGS} $0 -o dry1.o || exit 1
-	echo "${CC} -DPASS2 -O ${CFLAGS} $0 dry1.o ${LFLAGS} -o dry2o"
-	      ${CC} -DPASS2 -O ${CFLAGS} $0 dry1.o ${LFLAGS} -o dry2o || exit 1
-	./dry2o ${1-50000} 2>/dev/null
-	rm -f dry1.o
-
-        exit 0
-#endif
-
 /****************** "DHRYSTONE" Benchmark Program ***************************/
 #define Version "C, Version 2.2"
 /*  File:       dhry_1.c (part 2 of 3)
