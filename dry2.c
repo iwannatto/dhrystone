@@ -12,8 +12,11 @@
 extern  int     Int_Glob;
 extern  char    Ch_1_Glob;
 
+/* prototype declarations */
+/* in this file */
+Boolean Func_3(Enumeration Enum_Par_Val);
 
-Proc_6 (Enum_Val_Par, Enum_Ref_Par)
+void Proc_6 (Enum_Val_Par, Enum_Ref_Par)
 /*********************************/
     /* executed once */
     /* Enum_Val_Par == Ident_3, Enum_Ref_Par becomes Ident_2 */

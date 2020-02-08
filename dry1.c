@@ -12,9 +12,6 @@ char            Ch_1_Glob,
 int             Arr_1_Glob [50];
 int             Arr_2_Glob [50] [50];
 
-Enumeration     Func_1 ();
-  /* forward declaration necessary since Enumeration may not simply be int */
-
 #ifndef REG
         Boolean Reg = false;
 #define REG
@@ -35,6 +32,14 @@ float           Microseconds,
                 Dhrystones_Per_Second;
 
 /* end of variables for time measurement */
+
+/* prototype declarations */
+/* in this file */
+void Proc_1(REG Rec_Pointer Ptr_Val_Par);
+void Proc_2(One_Fifty *Int_Par_Ref);
+void Proc_3(Rec_Pointer *Ptr_Ref_Par);
+void Proc_4(void);
+void Proc_5(void);
 
 
 int main (argc, argv) int argc; char *argv[];
