@@ -110,6 +110,7 @@ int main (argc, argv) int argc; char *argv[];
 
   Done = false;
   while (!Done) {
+    Arr_2_Glob [8][7] = 10;
 
     printf ("Trying %d runs through Dhrystone:\n", Number_Of_Runs);
 
