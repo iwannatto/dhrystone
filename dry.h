@@ -33,8 +33,8 @@ struct tms      time_info;
 
 /* General definitions: */
 
-#include <stdio.h>
-                /* for strcpy, strcmp */
+#include <stdio.h>	/* I/O */
+#include <string.h>	/* strcpy, strcmp */
 
 #define Null 0 
                 /* Value of a Null pointer */
